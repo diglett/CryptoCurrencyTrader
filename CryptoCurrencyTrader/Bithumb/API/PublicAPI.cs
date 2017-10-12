@@ -11,7 +11,7 @@ namespace CryptoCurrencyTrader
         private const string Public = Base + "/public";
 
         public const string Ticker = Public + "/ticker/{currency}";
-        private const string OrderBook = Public + "/orderbook/{currency}";
-        private const string RecentTrasactions = Public + "/recent_transactions/{currency}";
+        public const string OrderBook = Public + "/orderbook/{currency}";
+        public const string RecentTrasactions = Public + "/recent_transactions/{currency}";
     }
 }

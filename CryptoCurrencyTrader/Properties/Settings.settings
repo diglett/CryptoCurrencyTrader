@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CryptoCurrencyTrader.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="BithumbAPIKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">b440f67ffbe9fed16693caa5a0d53002</Value>
+    </Setting>
+    <Setting Name="BithumbSecretKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">d02be90f1a46885cc31fd87690117426</Value>
+    </Setting>
+    <Setting Name="RemoteHost" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://api.bithumb.com</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

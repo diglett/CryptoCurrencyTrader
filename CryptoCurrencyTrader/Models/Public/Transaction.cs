@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptoCurrencyTrader
+namespace CryptoCurrencyTrader.Models.Public
 {
-    public class RecentTransactions
+    public class Transaction
     {
         public DateTime TransactionDate { get; set; }
         public string Type { get; set; }

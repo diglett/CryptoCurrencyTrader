@@ -23,8 +23,8 @@ namespace CryptoCurrencyTrader
         private const string Trade = Base + "/trade";
         public const string Place = Trade + "/place";
         public const string Cancel = Trade + "/cancel";
-        public const string BTCWithdrawal = Trade + "/btc_withdrawal";
-        public const string KRWDeposit = Trade + "/krw_deposit";
+        public const string Withdrawal = Trade + "/btc_withdrawal";
+        public const string Deposit = Trade + "/krw_deposit";
         public const string MarketBuy = Trade + "/market_buy";
         public const string MarketSell = Trade + "/market_sell"; 
         #endregion

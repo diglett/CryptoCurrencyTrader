@@ -38,13 +38,35 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
@@ -57,6 +79,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Enums\BankType.cs" />
+    <Compile Include="Models\Enums\CurrencyType.cs" />
+    <Compile Include="Models\Enums\TransactionSearchType.cs" />
+    <Compile Include="Models\Enums\TransactionType.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\OrderModelBase.cs" />
+    <Compile Include="Models\Private\Account.cs" />
+    <Compile Include="Models\Private\Balance.cs" />
+    <Compile Include="Models\Private\BtcWithdrawal.cs" />
+    <Compile Include="Models\Request\BuySellRequest.cs" />
+    <Compile Include="Models\Private\Cancel.cs" />
+    <Compile Include="Models\Private\KRWDepositInfo.cs" />
+    <Compile Include="Models\Private\KrwWithdrawal.cs" />
+    <Compile Include="Models\Private\OrderDetails.cs" />
+    <Compile Include="Models\Private\Orders.cs" />
+    <Compile Include="Models\Private\Trades.cs" />
+    <Compile Include="Models\Private\Trade.cs" />
+    <Compile Include="Models\Private\Order.cs" />
+    <Compile Include="Models\Private\OrderDetail.cs" />
+    <Compile Include="Models\Private\UserTransaction.cs" />
+    <Compile Include="Models\Private\UserTransactions.cs" />
+    <Compile Include="Models\Private\WalletAddress.cs" />
+    <Compile Include="Models\Public\Transactions.cs" />
+    <Compile Include="Models\Request\OrderHistoryRequest.cs" />
+    <Compile Include="Models\Request\OrderRequest.cs" />
+    <Compile Include="Models\Request\RequestBase.cs" />
+    <Compile Include="Models\Request\CryptoCurrencyWithdrawalRequest.cs" />
+    <Compile Include="Models\Request\TradeRequest.cs" />
+    <Compile Include="Models\Request\TransactionRequest.cs" />
+    <Compile Include="Models\Request\WithdrawalRequest.cs" />
+    <Compile Include="Models\Request\XRPWithdrawalRequest.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="RestClient\RestClient.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,22 +121,21 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bithumb\API\BaseAPI.cs" />
-    <Compile Include="Bithumb\API\BithumbAPI.cs" />
+    <Compile Include="Bithumb\API\Bithumb.cs" />
     <Compile Include="Bithumb\API\PublicAPI.cs" />
     <Compile Include="Bithumb\API\PrivateAPI.cs" />
-    <Compile Include="Models\ApiResult.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Currency\BidAskData.cs" />
-    <Compile Include="Models\Currency\OrderBook.cs" />
-    <Compile Include="Models\Currency\OrderBookData.cs" />
-    <Compile Include="Models\Currency\RecentTransactions.cs" />
-    <Compile Include="Models\Currency\Ticker.cs" />
-    <Compile Include="Models\Currency\TIckerData.cs" />
+    <Compile Include="Models\Public\BidAskData.cs" />
+    <Compile Include="Models\Public\OrderBook.cs" />
+    <Compile Include="Models\Public\OrderBookData.cs" />
+    <Compile Include="Models\Public\Transaction.cs" />
+    <Compile Include="Models\Public\Ticker.cs" />
+    <Compile Include="Models\Public\TIckerData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
