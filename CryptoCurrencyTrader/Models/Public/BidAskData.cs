@@ -2,7 +2,7 @@
 {
     public class BidAskData
     {
-        public string Quantity { get; set; }
-        public string Price { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
     }
 }

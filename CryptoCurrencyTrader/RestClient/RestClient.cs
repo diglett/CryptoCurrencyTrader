@@ -20,7 +20,7 @@ namespace CryptoCurrencyTrader
         public event NotifyHttpStatusCodeResult HttpStatusCodeResult;
         public event NotifyErrorResult ErrorResult;
 
-        private static RestClient _instance;
+        private static RestClient _instance = null;
 
         public static RestClient Instance
         {

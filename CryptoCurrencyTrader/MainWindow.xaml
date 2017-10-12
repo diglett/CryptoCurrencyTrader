@@ -1,7 +1,13 @@
 ﻿<Window x:Class="CryptoCurrencyTrader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Grid>
-        
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Width="800" Height="600"
+        Title="">
+    <Grid VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical">
+            <Button Style="{StaticResource BlackButtonStyle}" Content="Ticker" Command="{Binding TickerCommand}"/>
+            <Button Margin="0,10,0,0" Style="{StaticResource BlackButtonStyle}" Content="OrderBook" Command="{Binding OrderBookCommand}"/>
+            <Button Margin="0,10,0,0" Style="{StaticResource BlackButtonStyle}" Content="RecentTransactions" Command="{Binding RecentTransactionCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>

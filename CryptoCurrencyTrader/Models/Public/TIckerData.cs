@@ -1,29 +1,55 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CryptoCurrencyTrader.Utils;
+using Newtonsoft.Json;
 
 namespace CryptoCurrencyTrader.Models.Public
 {
     public class TickerData
     {
-        public string OpeningPrice { get; set; }
+        [JsonProperty("opening_price")]
+        public int OpeningPrice { get; set; }
 
-        public string ClosingPrice { get; set; }
+        [JsonProperty("closing_price")]
+        public int ClosingPrice { get; set; }
 
-        public string MinPrice { get; set; }
+        [JsonProperty("min_price")]
+        public int MinPrice { get; set; }
 
-        public string MaxPrice { get; set; }
+        [JsonProperty("max_price")]
+        public int MaxPrice { get; set; }
 
-        public string AveragePrice { get; set; }
+        [JsonProperty("average_price")]
+        public double AveragePrice { get; set; }
 
-        public string UnitsTraded { get; set; }
+        [JsonProperty("units_traded")]
+        public double UnitsTraded { get; set; }
 
-        public string Volume1Day { get; set; }
+        [JsonProperty("volume_1day")]
+        public double Volume1Day { get; set; }
 
-        public string Volume7Day { get; set; }
+        [JsonProperty("volume_7day")]
+        public double Volume7Day { get; set; }
 
-        public string BuyPrice { get; set; }
+        [JsonProperty("buy_price")]
+        public int BuyPrice { get; set; }
 
-        public string SellPrice { get; set; }
+        [JsonProperty("sell_price")]
+        public int SellPrice { get; set; }
 
-        public TimeSpan Date { get; set; }
+        [JsonProperty("date")]
+        public long TimeStamp { get; set; }
+
+        [JsonIgnore]
+        public DateTime FormattedDateTime
+        {
+            get
+            {
+                return CommonFunctions.ConvertUnixTimeStampToDateTime(TimeStamp);
+            }
+        }
     }
 }

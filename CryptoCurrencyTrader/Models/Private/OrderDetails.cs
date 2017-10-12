@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace CryptoCurrencyTrader.Models.Private
 {
-    public class OrderDetails : ModelBase<List<OrderDetail>>
+    public class OrderDetails
     {
+        public string Status { get; set; }
+
+        public List<OrderDetail> Data { get; set; }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{E5C99A67-0DF4-4DC1-A945-A3B65CB8AE49}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>CryptoCurrencyTrader</RootNamespace>
     <AssemblyName>CryptoCurrencyTrader</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
@@ -32,6 +32,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -62,6 +65,7 @@
     <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,27 +83,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\InvokeDelegateCommandAction.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Commands\RelayCommandBase.cs" />
     <Compile Include="Models\Enums\BankType.cs" />
     <Compile Include="Models\Enums\CurrencyType.cs" />
-    <Compile Include="Models\Enums\TransactionSearchType.cs" />
+    <Compile Include="Models\Enums\TransactionStatus.cs" />
     <Compile Include="Models\Enums\TransactionType.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\OrderModelBase.cs" />
     <Compile Include="Models\Private\Account.cs" />
-    <Compile Include="Models\Private\Balance.cs" />
-    <Compile Include="Models\Private\BtcWithdrawal.cs" />
+    <Compile Include="Models\Public\TickerData.cs" />
     <Compile Include="Models\Request\BuySellRequest.cs" />
-    <Compile Include="Models\Private\Cancel.cs" />
+    <Compile Include="Models\Private\CancelResult.cs" />
     <Compile Include="Models\Private\KRWDepositInfo.cs" />
-    <Compile Include="Models\Private\KrwWithdrawal.cs" />
+    <Compile Include="Models\Private\WithdrawResult.cs" />
     <Compile Include="Models\Private\OrderDetails.cs" />
     <Compile Include="Models\Private\Orders.cs" />
     <Compile Include="Models\Private\Trades.cs" />
     <Compile Include="Models\Private\Trade.cs" />
     <Compile Include="Models\Private\Order.cs" />
     <Compile Include="Models\Private\OrderDetail.cs" />
-    <Compile Include="Models\Private\UserTransaction.cs" />
-    <Compile Include="Models\Private\UserTransactions.cs" />
     <Compile Include="Models\Private\WalletAddress.cs" />
     <Compile Include="Models\Public\Transactions.cs" />
     <Compile Include="Models\Request\OrderHistoryRequest.cs" />
@@ -112,6 +116,9 @@
     <Compile Include="Models\Request\XRPWithdrawalRequest.cs" />
     <Compile Include="Models\Status.cs" />
     <Compile Include="RestClient\RestClient.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,14 +135,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Styles\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Public\BidAskData.cs" />
     <Compile Include="Models\Public\OrderBook.cs" />
-    <Compile Include="Models\Public\OrderBookData.cs" />
     <Compile Include="Models\Public\Transaction.cs" />
-    <Compile Include="Models\Public\Ticker.cs" />
-    <Compile Include="Models\Public\TIckerData.cs" />
+    <Compile Include="Models\Public\TIcker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

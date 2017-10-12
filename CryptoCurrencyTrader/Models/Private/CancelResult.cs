@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace CryptoCurrencyTrader.Models.Private
 {
-    public class KrwWithdrawal
+    public class CancelResult
     {
         [JsonProperty("status")]
         public string Status { get; set; }

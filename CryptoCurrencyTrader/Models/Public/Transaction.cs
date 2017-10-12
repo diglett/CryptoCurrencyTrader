@@ -10,8 +10,8 @@ namespace CryptoCurrencyTrader.Models.Public
     {
         public DateTime TransactionDate { get; set; }
         public string Type { get; set; }
-        public string UnitsTraded { get; set; }
-        public string Price { get; set; }
-        public string Total { get; set; }
+        public double UnitsTraded { get; set; }
+        public int Price { get; set; }
+        public int Total { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using CryptoCurrencyTrader.Utils;
+using Newtonsoft.Json;
 
 namespace CryptoCurrencyTrader.Models.Private
 {
@@ -9,7 +11,7 @@ namespace CryptoCurrencyTrader.Models.Private
         [JsonProperty("order_currency")]
         public string OrderCurrency { get; set; }
         [JsonProperty("order_date")]
-        public string OrderDate { get; set; }
+        public long OrderDateTime { get; set; }
         [JsonProperty("payment_currency")]
         public string PaymentCurrency { get; set; }
         [JsonProperty("type")]
@@ -17,18 +19,45 @@ namespace CryptoCurrencyTrader.Models.Private
         [JsonProperty("status")]
         public string Status { get; set; }
         [JsonProperty("units")]
-        public string Units { get; set; }
+        public double Units { get; set; }
         [JsonProperty("units_remaining")]
-        public string UnitsRemaining { get; set; }
+        public double UnitsRemaining { get; set; }
         [JsonProperty("price")]
-        public string Price { get; set; }
+        public long Price { get; set; }
         [JsonProperty("misu_yn")]
         public string MisuYN { get; set; }
         [JsonProperty("fee")]
-        public string Fee { get; set; }
+        public double? Fee { get; set; }
         [JsonProperty("total")]
-        public string Total { get; set; }
+        public long? Total { get; set; }
         [JsonProperty("date_completed")]
-        public string DateCompleted { get; set; }
+        public long? CompletedDateTime { get; set; }
+
+        [JsonIgnore]
+        public bool IsCompletedOrder
+        {
+            get { return CompletedDateTime != null; }
+        }
+
+        [JsonIgnore]
+        public DateTime FormattedOrderDateTime
+        {
+            get
+            {
+                return CommonFunctions.ConvertUnixTimeStampToDateTime(OrderDateTime);
+            }
+        }
+
+        [JsonIgnore]
+        public DateTime? FormattedCompletedDateTime
+        {
+            get
+            {
+                if (IsCompletedOrder)
+                    return null;
+
+                return CommonFunctions.ConvertUnixTimeStampToDateTime((long)CompletedDateTime);
+            }
+        }
     }
 }

@@ -7,12 +7,12 @@ namespace CryptoCurrencyTrader.Models.Private
         [JsonProperty("cont_id")]
         public string ContractID { get; set; }
         [JsonProperty("units")]
-        public string Units { get; set; }
+        public double Units { get; set; }
         [JsonProperty("price")]
-        public string Price { get; set; }
+        public long Price { get; set; }
         [JsonProperty("total")]
-        public string Total { get; set; }
+        public int Total { get; set; }
         [JsonProperty("fee")]
-        public string Fee { get; set; }
+        public double Fee { get; set; }
     }
 }

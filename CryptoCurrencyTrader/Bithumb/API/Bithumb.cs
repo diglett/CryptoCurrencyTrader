@@ -10,7 +10,6 @@ using CryptoCurrencyTrader.Models.Private;
 using CryptoCurrencyTrader.Models.Public;
 using CryptoCurrencyTrader.Models.Request;
 using Newtonsoft.Json.Linq;
-using Ticker = CryptoCurrencyTrader.Models.Public.Ticker;
 
 namespace CryptoCurrencyTrader
 {
@@ -20,8 +19,8 @@ namespace CryptoCurrencyTrader
 
         // API Connect Key : b440f67ffbe9fed16693caa5a0d53002
         // Secret Key : d02be90f1a46885cc31fd87690117426
-        private string _apiKey = "b440f67ffbe9fed16693caa5a0d53002";
-        private string _apiSecretKey = "d02be90f1a46885cc31fd87690117426";
+        private static string _apiKey = "b440f67ffbe9fed16693caa5a0d53002";
+        private static string _apiSecretKey = "d02be90f1a46885cc31fd87690117426";
 
         public Bithumb(string apiKey, string apiSecret)
         {
@@ -31,17 +30,17 @@ namespace CryptoCurrencyTrader
 
         #region Public API
 
-        public async Task<Ticker> GetTickerAsync(string currency)
+        public static async Task<Ticker> GetTickerAsync(string currency)
         {
             return await RestClient.Instance.GetAsync<Ticker>(PublicAPI.Ticker.Replace("{currency}", currency));
         }
 
-        public async Task<OrderBook> GetOrderBookAsync(string currency)
+        public static async Task<OrderBook> GetOrderBookAsync(string currency)
         {
             return await RestClient.Instance.GetAsync<OrderBook>(PublicAPI.OrderBook.Replace("{currency}", currency));
         }
 
-        public async Task<Transactions> GetRecentTransactionsAsync(string currency)
+        public static async Task<Transactions> GetRecentTransactionsAsync(string currency)
         {
             return await RestClient.Instance.GetAsync<Transactions>(PublicAPI.RecentTrasactions.Replace("{currency}", currency));
         }
@@ -50,7 +49,7 @@ namespace CryptoCurrencyTrader
 
         #region Private API
 
-        public async Task<Account> GetAccountAsync(string currency)
+        public static async Task<Account> GetAccountAsync(string currency)
         {
             var request = new JObject
             {
@@ -60,17 +59,17 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<JObject, Account>(PrivateAPI.Account, request);
         }
 
-        public async Task<Balance> GetBalanceAsync(string currency)
+        public static async Task<JObject> GetBalanceAsync(string currency)
         {
             var request = new JObject
             {
                 { "currency", currency }
             };
 
-            return await RestClient.Instance.PostAsync<JObject, Balance>(PrivateAPI.Balance, request);
+            return await RestClient.Instance.PostAsync<JObject, JObject>(PrivateAPI.Balance, request);
         }
 
-        public async Task<WalletAddress> GetWalletAddressAsync(string currency)
+        public static async Task<WalletAddress> GetWalletAddressAsync(string currency)
         {
             var request = new JObject
             {
@@ -80,7 +79,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<JObject, WalletAddress>(PrivateAPI.WalletAddress, request);
         }
 
-        public async Task<Ticker> GetTickerAsync(string orderCurrency, string paymentCurrency)
+        public static async Task<Ticker> GetTickerAsync(string orderCurrency, string paymentCurrency)
         {
             var request = new JObject
             {
@@ -91,7 +90,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<JObject, Ticker>(PrivateAPI.Ticker, request);
         }
 
-        public async Task<Orders> GetOrdersAsync(string orderID, string transactionType, int count, int after, CurrencyType currency)
+        public static async Task<Orders> GetOrdersAsync(string orderID, string transactionType, int count, int after, CurrencyType currency)
         {
             var request = new OrderHistoryRequest
             {
@@ -107,7 +106,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<OrderHistoryRequest, Orders>(PrivateAPI.Orders, request);
         }
 
-        public async Task<UserTransactions> GetUserTransactionAsync(int offset, int count, string searchGb, CurrencyType currency)
+        public static async Task<JObject> GetUserTransactionAsync(int offset, int count, string searchGb, CurrencyType currency)
         {
             var request = new TransactionRequest
             {
@@ -119,10 +118,10 @@ namespace CryptoCurrencyTrader
                 currency = currency.ToString()
             };
 
-            return await RestClient.Instance.PostAsync<TransactionRequest, UserTransactions>(PrivateAPI.UserTransactions, request);
+            return await RestClient.Instance.PostAsync<TransactionRequest, JObject>(PrivateAPI.UserTransactions, request);
         }
 
-        public async Task<Trades> GetPlacesAsync(CurrencyType orderCurrency, CurrencyType paymentCurrency, float units, int price, string type, string misu)
+        public static async Task<Trades> GetPlacesAsync(CurrencyType orderCurrency, CurrencyType paymentCurrency, float units, int price, string type, string misu)
         {
             var request = new TradeRequest
             {
@@ -139,7 +138,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<TradeRequest, Trades>(PrivateAPI.Place, request);
         }
 
-        public async Task<OrderDetails> GetOrderDetailAsync(string type, string orderID, string currency)
+        public static async Task<OrderDetails> GetOrderDetailAsync(string type, string orderID, string currency)
         {
             var request = new OrderRequest
             {
@@ -153,7 +152,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<OrderRequest, OrderDetails>(PrivateAPI.OrderDetail, request);
         }
 
-        public async Task<RequestStatus> CancelAsync(string type, string orderID, string currency)
+        public static async Task<RequestStatus> CancelAsync(string type, string orderID, string currency)
         {
             var request = new OrderRequest
             {
@@ -167,7 +166,7 @@ namespace CryptoCurrencyTrader
             return await RestClient.Instance.PostAsync<OrderRequest,RequestStatus>(PrivateAPI.Cancel, request);
         }
 
-        public async Task<RequestStatus> WithdrawCryptoCurrencyAsync(string units, string address, string destinaion, CurrencyType currency)
+        public static async Task<RequestStatus> WithdrawCryptoCurrencyAsync(string units, string address, string destinaion, CurrencyType currency)
         {
             if (currency == CurrencyType.XRP)
             {

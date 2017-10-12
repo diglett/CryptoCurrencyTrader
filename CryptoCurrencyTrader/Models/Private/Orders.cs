@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace CryptoCurrencyTrader.Models.Private
 {
-    public class Orders : ModelBase<List<Order>>
+    public class Orders
     {
+        public string Status { get; set; }
+
+        public List<Order> Data { get; set; }
     }
 }

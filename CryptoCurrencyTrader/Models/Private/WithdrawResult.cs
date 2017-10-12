@@ -2,7 +2,7 @@
 
 namespace CryptoCurrencyTrader.Models.Private
 {
-    public class BtcWithdrawal
+    public class WithdrawResult
     {
         [JsonProperty("status")]
         public string Status { get; set; }
