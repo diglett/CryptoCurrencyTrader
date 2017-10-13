@@ -7,7 +7,7 @@
         <StackPanel Orientation="Vertical">
             <Button Style="{StaticResource BlackButtonStyle}" Content="Ticker" Command="{Binding TickerCommand}"/>
             <Button Margin="0,10,0,0" Style="{StaticResource BlackButtonStyle}" Content="OrderBook" Command="{Binding OrderBookCommand}"/>
-            <Button Margin="0,10,0,0" Style="{StaticResource BlackButtonStyle}" Content="RecentTransactions" Command="{Binding RecentTransactionCommand}"/>
+            <Button Margin="0,10,0,0" Style="{StaticResource BlackButtonStyle}" Content="RecentTransactions" Command="{Binding RecentTransactionsCommand}"/>
         </StackPanel>
     </Grid>
 </Window>

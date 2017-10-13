@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CryptoCurrencyTrader.Utils;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CryptoCurrencyTrader.Models.Public
 {
@@ -50,6 +47,25 @@ namespace CryptoCurrencyTrader.Models.Public
             {
                 return CommonFunctions.ConvertUnixTimeStampToDateTime(TimeStamp);
             }
+        }
+        
+        public override string ToString()
+        {
+            JObject jsonObject = new JObject
+            {
+                {"OpeningPrice", OpeningPrice},
+                {"ClosingPrice", ClosingPrice},
+                {"MinPrice", MinPrice},
+                {"MaxPrice", MaxPrice},
+                {"UnitsTraded", UnitsTraded},
+                {"Volume1Day", Volume1Day},
+                {"Volume7Day", Volume7Day},
+                {"BuyPrice", BuyPrice},
+                {"SellPrice", SellPrice},
+                {"FormattedDateTime", FormattedDateTime.ToString("yyyy-MM-dd HH:mm:ss")}
+            };
+
+            return $"Ticker:\r\n{jsonObject.ToString()}";
         }
     }
 }

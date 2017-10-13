@@ -11,7 +11,7 @@ namespace CryptoCurrencyTrader.Utils
         public static DateTime ConvertUnixTimeStampToDateTime(long timeStamp)
         {
             DateTime startDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-            startDateTime = startDateTime.AddSeconds(timeStamp).ToLocalTime();
+            startDateTime = startDateTime.AddMilliseconds(timeStamp).ToLocalTime();
             return startDateTime;
         }
     }

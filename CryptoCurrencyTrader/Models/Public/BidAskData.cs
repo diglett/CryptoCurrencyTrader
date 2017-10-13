@@ -1,8 +1,21 @@
-﻿namespace CryptoCurrencyTrader.Models.Public
+﻿using Newtonsoft.Json.Linq;
+
+namespace CryptoCurrencyTrader.Models.Public
 {
     public class BidAskData
     {
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
         public int Price { get; set; }
+
+        public override string ToString()
+        {
+            var jsonObject = new JObject
+            {
+                {"Quantity", Quantity},
+                {"Price", Price}
+            };
+
+            return jsonObject.ToString();
+        }
     }
 }

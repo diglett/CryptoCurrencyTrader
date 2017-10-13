@@ -7,28 +7,10 @@ namespace CryptoCurrencyTrader.Models.Public
 {
     public class OrderBook
     {
-        [JsonProperty("timestamp")]
-        public long TimeStamp { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
-        [JsonProperty("order_currency")]
-        public string OrderCurrency { get; set; }
-
-        [JsonProperty("payment_currency")]
-        public string PaymentCurrency { get; set; }
-
-        [JsonProperty("bids")]
-        public List<BidAskData> Bids { get; set; }
-
-        [JsonProperty("asks")]
-        public List<BidAskData> Asks { get; set; }
-
-        [JsonIgnore]
-        public DateTime FormattedDateTime
-        {
-            get
-            {
-                return CommonFunctions.ConvertUnixTimeStampToDateTime(TimeStamp);
-            }
-        }
+        [JsonProperty("data")]
+        public OrderBookData Data { get; set; }
     }
 }

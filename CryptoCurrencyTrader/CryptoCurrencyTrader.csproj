@@ -93,7 +93,9 @@
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\OrderModelBase.cs" />
     <Compile Include="Models\Private\Account.cs" />
+    <Compile Include="Models\Public\OrderBookData.cs" />
     <Compile Include="Models\Public\TickerData.cs" />
+    <Compile Include="Models\Public\TransactionData.cs" />
     <Compile Include="Models\Request\BuySellRequest.cs" />
     <Compile Include="Models\Private\CancelResult.cs" />
     <Compile Include="Models\Private\KRWDepositInfo.cs" />

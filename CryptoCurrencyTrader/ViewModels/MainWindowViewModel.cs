@@ -31,12 +31,47 @@ namespace CryptoCurrencyTrader.ViewModels
                     {
                         var ticker = result.Data;
                         
-                        Console.WriteLine(ticker);
+                        Console.WriteLine(ticker.ToString());
                     }
                 })); 
             }
         }
 
+        public ICommand OrderBookCommand
+        {
+            get
+            {
+                return Get(() => OrderBookCommand, new RelayCommand(async () =>
+                {
+                    var result = await Bithumb.GetOrderBookAsync(CurrencyType.XRP.ToString());
+
+                    if (result != null && result.Status == "0000")
+                    {
+                        var orderBook = result.Data;
+
+                        Console.WriteLine(orderBook.ToString());
+                    }
+                }));
+            }
+        }
+
+        public ICommand RecentTransactionsCommand
+        {
+            get
+            {
+                return Get(() => RecentTransactionsCommand, new RelayCommand(async () =>
+                {
+                    var result = await Bithumb.GetRecentTransactionsAsync(CurrencyType.XRP.ToString());
+
+                    if (result != null && result.Status == "0000")
+                    {
+                        var orderBook = result.Data;
+
+                        Console.WriteLine(orderBook.ToString());
+                    }
+                }));
+            }
+        }
 
         #endregion
     }
