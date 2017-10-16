@@ -65,7 +65,7 @@ namespace CryptoCurrencyTrader.Models.Public
                 {"Asks", asks}
             };
 
-            return jsonObject.ToString();
+            return $"OrderBook : \r\n{jsonObject.ToString()}";
         }
     }
 }

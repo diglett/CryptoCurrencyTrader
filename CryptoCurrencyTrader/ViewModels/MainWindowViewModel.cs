@@ -65,9 +65,9 @@ namespace CryptoCurrencyTrader.ViewModels
 
                     if (result != null && result.Status == "0000")
                     {
-                        var orderBook = result.Data;
+                        var recenTransactions = result.Data;
 
-                        Console.WriteLine(orderBook.ToString());
+                        Console.WriteLine(result.ToString());
                     }
                 }));
             }
